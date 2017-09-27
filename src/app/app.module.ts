@@ -1,22 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-/* Angular Material Dependencies */
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdCheckboxModule} from '@angular/material';
-
 import { AppComponent } from './app.component';
+import { PharmDrugComponent } from './pharm-drug/pharm-drug.component';
+import { PharmDrugAddComponent } from './pharm-drug/pharm-drug-add/pharm-drug-add.component';
+import { CommonNavbarComponent } from './common-navbar/common-navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PharmDrugComponent,
+    PharmDrugAddComponent,
+    CommonNavbarComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    // Angular Material Components
-    MdButtonModule,
-    MdCheckboxModule
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
