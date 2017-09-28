@@ -7,6 +7,7 @@ import { PharmDrugComponent } from './pharm-drug/pharm-drug.component';
 import { PharmDrugAddComponent } from './pharm-drug/pharm-drug-add/pharm-drug-add.component';
 import { CommonNavbarComponent } from './common-navbar/common-navbar.component';
 import { CommonSidebarComponent } from './common-sidebar/common-sidebar.component';
+import { PharmDrugUpdateComponent } from './pharm-drug/pharm-drug-update/pharm-drug-update.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CommonSidebarComponent } from './common-sidebar/common-sidebar.componen
     PharmDrugComponent,
     PharmDrugAddComponent,
     CommonNavbarComponent,
-    CommonSidebarComponent
+    CommonSidebarComponent,
+    PharmDrugUpdateComponent
   ],
   imports: [
     BrowserModule,
