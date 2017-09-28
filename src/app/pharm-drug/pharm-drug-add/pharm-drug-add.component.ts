@@ -8,12 +8,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class PharmDrugAddComponent implements OnInit {
 
-  
-
-  constructor(private myform: FormGroup) { 
-
-  }
-
   ngOnInit() {
 
   }
