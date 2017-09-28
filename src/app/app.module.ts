@@ -23,6 +23,7 @@ import { PharmDrugUpdateComponent } from './pharm-drug/pharm-drug-update/pharm-d
     RouterModule.forRoot([
       { path : '' , component : PharmDrugComponent},
       { path : 'addDrug' , component : PharmDrugAddComponent},
+      { path : 'updateDrug' , component : PharmDrugUpdateComponent},
     ])
   ],
   providers: [],
