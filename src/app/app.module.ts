@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ClarityModule } from "clarity-angular";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PharmDrugComponent } from './pharm-drug/pharm-drug.component';
@@ -21,6 +22,8 @@ import { PharmDrugUpdateComponent } from './pharm-drug/pharm-drug-update/pharm-d
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     ClarityModule.forRoot(),
     RouterModule.forRoot([
       { path : '' , component : PharmDrugComponent},
