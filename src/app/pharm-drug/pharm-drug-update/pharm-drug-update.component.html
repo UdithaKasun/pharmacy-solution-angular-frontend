@@ -1,10 +1,10 @@
 <form class="form" [formGroup]="employeeAddressForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
-  <section class="form-block">
-    <label><clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Add New Drug</label>
-    <hr>
-    <div class="form-group">
-      <label for="empFullName">Drug Name</label>
-      <label for="empFullName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="employeeAddressForm.get('fullName').invalid
+    <section class="form-block">
+        <label><clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Add New Drug</label>
+        <hr>
+        <div class="form-group">
+            <label for="empFullName">Drug Name</label>
+            <label for="empFullName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="employeeAddressForm.get('fullName').invalid
                   && (employeeAddressForm.get('fullName').dirty || employeeAddressForm.get('fullName').touched)">
               <input id="empFullName" type="text"
                   formControlName="fullName" size="35">
@@ -12,73 +12,8 @@
                   Name is required.
               </span>
           </label>
-    </div>
-
-    <div formGroupName="address">
-      <div class="form-group">
-        <label for="selects_1">Drug Type</label>
-        <div class="select">
-          <select id="selects_1">
-                      <option>Tablet</option>
-                      <option>Syrup</option>
-                  </select>
         </div>
-      </div>
-    </div>
-
-    <div formGroupName="address">
-      <div class="form-group">
-        <label for="selects_1">Drug Category</label>
-        <div class="select">
-          <select id="selects_1">
-                      <option>Injection</option>
-                      <option>Narcotis</option>
-                  </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label for="empFullName">Drug Price</label>
-      <label for="empFullName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="employeeAddressForm.get('fullName').invalid
-                  && (employeeAddressForm.get('fullName').dirty || employeeAddressForm.get('fullName').touched)">
-              <input id="empFullName" type="text"
-                  formControlName="fullName" size="35">
-              <span class="tooltip-content">
-                  Name is required.
-              </span>
-          </label>
-    </div>
-
-    <div class="form-group">
-      <label for="empFullName">Drug Initial Quantity</label>
-      <label for="empFullName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="employeeAddressForm.get('fullName').invalid
-                  && (employeeAddressForm.get('fullName').dirty || employeeAddressForm.get('fullName').touched)">
-              <input id="empFullName" type="text"
-                  formControlName="fullName" size="35">
-              <span class="tooltip-content">
-                  Name is required.
-              </span>
-          </label>
-    </div>
-
-    <div class="form-group">
-      <label for="empFullName">Drug Reorder Quantity</label>
-      <label for="empFullName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="employeeAddressForm.get('fullName').invalid
-                  && (employeeAddressForm.get('fullName').dirty || employeeAddressForm.get('fullName').touched)">
-              <input id="empFullName" type="text"
-                  formControlName="fullName" size="35">
-              <span class="tooltip-content">
-                  Name is required.
-              </span>
-          </label>
-    </div>
-
-    <div class="form-group">
-      <label for="empFullName">Drug Remarks</label>
-        <textarea id="formFields_8" rows="5" width="5px"></textarea>
-    </div>
         <button class="btn btn-primary" type="submit">Add Drug</button>
         <button class="btn btn-warning" type="submit">Reset</button>
-  </section>
+    </section>
 </form>
