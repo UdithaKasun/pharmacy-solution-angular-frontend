@@ -1,26 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators} from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: 'app-pharm-drug-update',
   templateUrl: './pharm-drug-update.component.html',
   styleUrls: ['./pharm-drug-update.component.css']
 })
-export class PharmDrugUpdateComponent {
+export class PharmDrugUpdateComponent implements OnInit {
 
-  employeeAddressForm = new FormGroup({
-    fullName: new FormControl('', Validators.required),
-    address: new FormGroup({
-      postalCode: new FormControl('', Validators.required),
-      country: new FormControl('', Validators.required)
-    })
-  });
-  submitted = false;
+  drugAddForm: FormGroup;
+  submitted: boolean;
+
+  ngOnInit(): void {
+    this.drugAddForm = new FormGroup({
+      drugName: new FormControl('', Validators.required),
+      drugPrice: new FormControl('',[Validators.required,Validators.pattern('\\d{4,4}')])
+    });
+    this.submitted = false;
+  }
+
+
   onSubmit() {
 
   }
   addNewEmployeeAddress() {
-    this.employeeAddressForm.reset();
+    this.drugAddForm.reset();
     this.submitted = false;
   }
 }

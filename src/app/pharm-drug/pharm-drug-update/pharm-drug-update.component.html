@@ -1,84 +1,52 @@
-<form class="form" [formGroup]="employeeAddressForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
-  <section class="form-block">
-    <label><clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Add New Drug</label>
-    <hr>
-    <div class="form-group">
-      <label for="empFullName">Drug Name</label>
-      <label for="empFullName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="employeeAddressForm.get('fullName').invalid
-                  && (employeeAddressForm.get('fullName').dirty || employeeAddressForm.get('fullName').touched)">
-              <input id="empFullName" type="text"
-                  formControlName="fullName" size="35">
-              <span class="tooltip-content">
-                  Name is required.
-              </span>
-          </label>
-    </div>
+<form class="form" [formGroup]="drugAddForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
+    <section class="form-block">
+      <label><clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Add New Drug</label>
+      <hr>
 
-    <div formGroupName="address">
       <div class="form-group">
-        <label for="selects_1">Drug Type</label>
+        <label for="drugName">Drug Name</label>
+        <label for="drugName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddForm.get('drugName').invalid
+                    && (drugAddForm.get('drugName').dirty || drugAddForm.get('drugName').touched)">
+                <input id="drugName" type="text"
+                    formControlName="drugName" size="35">
+                <span class="tooltip-content">
+                    Drug Name cannot be empty.
+                </span>
+            </label>
+      </div>
+
+      <div class="form-group">
+        <label for="drug_type_select">Drug Type</label>
         <div class="select">
-          <select id="selects_1">
+          <select id="drug_type_select">
                       <option>Tablet</option>
                       <option>Syrup</option>
                   </select>
         </div>
       </div>
-    </div>
 
-    <div formGroupName="address">
       <div class="form-group">
-        <label for="selects_1">Drug Category</label>
+        <label for="drug_category_select">Drug Category</label>
         <div class="select">
-          <select id="selects_1">
+          <select id="drug_category_select">
                       <option>Injection</option>
                       <option>Narcotis</option>
                   </select>
         </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="empFullName">Drug Price</label>
-      <label for="empFullName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="employeeAddressForm.get('fullName').invalid
-                  && (employeeAddressForm.get('fullName').dirty || employeeAddressForm.get('fullName').touched)">
-              <input id="empFullName" type="text"
-                  formControlName="fullName" size="35">
-              <span class="tooltip-content">
-                  Name is required.
-              </span>
-          </label>
-    </div>
-
-    <div class="form-group">
-      <label for="empFullName">Drug Initial Quantity</label>
-      <label for="empFullName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="employeeAddressForm.get('fullName').invalid
-                  && (employeeAddressForm.get('fullName').dirty || employeeAddressForm.get('fullName').touched)">
-              <input id="empFullName" type="text"
-                  formControlName="fullName" size="35">
-              <span class="tooltip-content">
-                  Name is required.
-              </span>
-          </label>
-    </div>
-
-    <div class="form-group">
-      <label for="empFullName">Drug Reorder Quantity</label>
-      <label for="empFullName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="employeeAddressForm.get('fullName').invalid
-                  && (employeeAddressForm.get('fullName').dirty || employeeAddressForm.get('fullName').touched)">
-              <input id="empFullName" type="text"
-                  formControlName="fullName" size="35">
-              <span class="tooltip-content">
-                  Name is required.
-              </span>
-          </label>
-    </div>
-
-    <div class="form-group">
-      <label for="empFullName">Drug Remarks</label>
-        <textarea id="formFields_8" rows="5" width="5px"></textarea>
-    </div>
-        <button class="btn btn-primary" type="submit">Add Drug</button>
-        <button class="btn btn-warning" type="submit">Reset</button>
-  </section>
-</form>
+      <div class="form-group">
+        <label for="drugPrice">Drug Price</label>
+        <label for="drugPrice" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddForm.get('drugPrice').invalid
+                    && (drugAddForm.get('drugPrice').dirty || drugAddForm.get('drugPrice').touched)">
+                <input id="drugPrice" type="text"
+                    formControlName="drugPrice" size="35">
+                <span class="tooltip-content">
+                    Drug Price cannot be empty.
+                </span>
+            </label>
+      </div>
+          <button class="btn btn-primary" type="submit">Add Drug</button>
+          <button class="btn btn-warning" type="submit">Reset</button>
+    </section>
+  </form>
