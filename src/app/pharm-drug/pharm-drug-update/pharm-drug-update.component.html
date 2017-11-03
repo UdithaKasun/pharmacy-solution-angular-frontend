@@ -1,86 +1,110 @@
-<form class="form" [formGroup]="drugAddForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
+<form [formGroup]="drugUpdateForm" (ngSubmit)="onSubmit()">
     <section class="form-block">
-      <label><clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Add New Drug</label>
-      <hr>
-
-      <!-- Drug Name -->
-      <div class="form-group">
-        <label for="drugName">Drug Name</label>
-        <label for="drugName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddForm.get('drugName').invalid
-                    && (drugAddForm.get('drugName').dirty || drugAddForm.get('drugName').touched)">
-                <input id="drugName" type="text"
-                    formControlName="drugName" size="35">
+        <label>
+            <clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Search Drug</label>
+        <hr>
+        <label>Search Criteria </label>
+        <div class="form-group">
+            <label class="required">Drug Name to be Searched </label>
+            <label for="drugName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugUpdateForm.get('drugName').invalid
+                && (drugUpdateForm.get('drugName').dirty || drugUpdateForm.get('drugName').touched)">
+                <input id="drugName" type="text" formControlName="drugName" size="35">
                 <span class="tooltip-content">
                     Drug Name cannot be empty.
                 </span>
             </label>
-      </div>
-
-      <!-- Drug Type -->
-      <div class="form-group">
-        <label for="drug_type_select">Drug Type</label>
-        <div class="select">
-          <select id="drug_type_select">
-                      <option>Tablet</option>
-                      <option>Syrup</option>
-                  </select>
         </div>
-      </div>
-
-      <!-- Drug Category -->
-      <div class="form-group">
-        <label for="drug_category_select">Drug Category</label>
-        <div class="select">
-          <select id="drug_category_select">
-                      <option>Injection</option>
-                      <option>Narcotis</option>
-                      <option>Narcotis 123</option>
-                  </select>
-        </div>
-      </div>
-
-      <!-- Drug Price -->
-      <div class="form-group">
-        <label for="drugPrice">Drug Price</label>
-        <label for="drugPrice" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddForm.get('drugPrice').invalid
-                    && (drugAddForm.get('drugPrice').dirty || drugAddForm.get('drugPrice').touched)">
-                <input id="drugPrice" type="text"
-                    formControlName="drugPrice" size="35">
-                <span class="tooltip-content">
-                    Drug Price cannot be empty.
-                </span>
-            </label>
-      </div>
-
-      <!-- Drug Initial Quantity -->
-      <div class="form-group">
-        <label for="drugInitialQuantity">Drug Initial Quantity</label>
-        <label for="drugInitialQuantity" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddForm.get('drugInitialQuantity').invalid
-                    && (drugAddForm.get('drugInitialQuantity').dirty || drugAddForm.get('drugInitialQuantity').touched)">
-                <input id="empdrugInitialQuantity" type="text"
-                    formControlName="drugInitialQuantity" size="35">
-                <span class="tooltip-content">
-                    Initial Quantity is required and should be a numeric value 
-                </span>
-            </label>
-      </div>
-
-      <!-- Drug Reorder Quantity -->
-      <div class="form-group">
-        <label for="drugReorderQuantity">Drug Reorder Quantity</label>
-        <label for="drugReorderQuantity" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddForm.get('drugReorderQuantity').invalid
-                    && (drugAddForm.get('drugReorderQuantity').dirty || drugAddForm.get('drugReorderQuantity').touched)">
-                <input id="empdrugReorderQuantity" type="text"
-                    formControlName="drugReorderQuantity" size="35">
-                <span class="tooltip-content" *ngIf="drugAddForm.get('drugReorderQuantity').value == '' && drugAddForm.get('drugReorderQuantity').dirty">
-                    Reorder quantity is required
-                </span>
-                <span class="tooltip-content" *ngIf="drugAddForm.get('drugReorderQuantity').value != '' && drugAddForm.get('drugReorderQuantity').invalid && drugAddForm.get('drugReorderQuantity').dirty">
-                    Reorder quantity should be numeric
-                </span>
-            </label>
-      </div>
-          <button class="btn btn-primary" type="submit" [disabled]="drugAddForm.invalid">Add Drug</button>
-          <button class="btn btn-warning" type="submit">Reset</button>
+        <button type="submit" class="btn btn-primary" [disabled]="drugUpdateForm.invalid">Search</button>
+        <button type="submit" class="btn btn-secondary">Clear</button>
     </section>
-  </form>
+
+
+</form>
+
+<hr>
+
+<clr-datagrid>
+    <clr-dg-column>Drug Name</clr-dg-column>
+    <clr-dg-column>Drug Unit</clr-dg-column>
+    <clr-dg-column>Drug Current Quantity</clr-dg-column>
+    <clr-dg-column>Drug Reorder Quantity</clr-dg-column>
+    <clr-dg-column>Drug Price</clr-dg-column>
+    <clr-dg-column>Update/Delete Drug</clr-dg-column>
+    <clr-dg-row *ngFor="let drug of drugs">
+        <clr-dg-cell>{{drug.drug_name}}</clr-dg-cell>
+        <clr-dg-cell>{{drug.drug_unit}}</clr-dg-cell>
+        <clr-dg-cell>{{drug.drug_current_quantity}}</clr-dg-cell>
+        <clr-dg-cell>{{drug.drug_status_reorder}}</clr-dg-cell>
+        <clr-dg-cell>{{drug.drug_price}}</clr-dg-cell>
+        <clr-dg-cell>
+            <button class="btn btn-success btn-sm" (click)="viewUpdate(drug)">Update</button>
+            <button class="btn btn-danger  btn-sm" (click)="deleteDrug(drug)">Delete</button>
+        </clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer *ngIf="drugs.length > 0">{{drugs.length}} search results</clr-dg-footer>
+    <clr-dg-footer *ngIf="drugs.length == 0">No Search Results</clr-dg-footer>
+</clr-datagrid>
+
+<!-- Update Modal -->
+<clr-modal [(clrModalOpen)]="showUpdate" [clrModalSize]="'lg'">
+    <h3 class="modal-title">Update Drug</h3>
+    <div class="modal-body">
+        <form class="form" [formGroup]="drugAddForm" (ngSubmit)="updateDrug()">
+            <section class="form-block">
+                <!-- Drug Name -->
+                <div class="form-group">
+                    <label for="drugName">Drug Name</label>
+                    <label for="drugName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddForm.get('drugName').invalid
+                                                && (drugAddForm.get('drugName').dirty || drugAddForm.get('drugName').touched)">
+                        <input id="drugName" type="text" formControlName="drugName" size="35">
+                        <span class="tooltip-content">
+                            Drug Name cannot be empty.
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Drug Price -->
+                <div class="form-group">
+                    <label for="drugPrice">Drug Price</label>
+                    <label for="drugPrice" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddForm.get('drugPrice').invalid
+                                                && (drugAddForm.get('drugPrice').dirty || drugAddForm.get('drugPrice').touched)">
+                        <input id="drugPrice" type="text" formControlName="drugPrice" size="35">
+                        <span class="tooltip-content">
+                            Drug Price cannot be empty.
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Drug Initial Quantity -->
+                <div class="form-group">
+                    <label for="drugInitialQuantity">Drug Initial Quantity</label>
+                    <label for="drugInitialQuantity" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddForm.get('drugInitialQuantity').invalid
+                                                && (drugAddForm.get('drugInitialQuantity').dirty || drugAddForm.get('drugInitialQuantity').touched)">
+                        <input id="empdrugInitialQuantity" type="text" formControlName="drugInitialQuantity" size="35">
+                        <span class="tooltip-content">
+                            Initial Quantity is required and should be a numeric value
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Drug Reorder Quantity -->
+                <div class="form-group">
+                    <label for="drugReorderQuantity">Drug Reorder Quantity</label>
+                    <label for="drugReorderQuantity" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddForm.get('drugReorderQuantity').invalid
+                                                && (drugAddForm.get('drugReorderQuantity').dirty || drugAddForm.get('drugReorderQuantity').touched)">
+                        <input id="empdrugReorderQuantity" type="text" formControlName="drugReorderQuantity" size="35">
+                        <span class="tooltip-content" *ngIf="drugAddForm.get('drugReorderQuantity').value == '' && drugAddForm.get('drugReorderQuantity').dirty">
+                            Reorder quantity is required
+                        </span>
+                        <span class="tooltip-content" *ngIf="drugAddForm.get('drugReorderQuantity').value != '' && drugAddForm.get('drugReorderQuantity').invalid && drugAddForm.get('drugReorderQuantity').dirty">
+                            Reorder quantity should be numeric
+                        </span>
+                    </label>
+                </div>
+                <button class="btn btn-primary" type="submit" [disabled]="drugAddForm.invalid || !drugAddForm.dirty">Update Drug</button>
+                <button class="btn btn-warning" type="submit">Reset</button>
+            </section>
+        </form>
+    </div>
+</clr-modal>

@@ -1,0 +1,42 @@
+<form [formGroup]="drugSearchForm" (ngSubmit)="onSubmit()">
+    <section class="form-block">
+        <label>
+            <clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Search Drug</label>
+        <hr>
+        <label>Search Criteria </label>
+        <div class="form-group">
+            <label class="required">Drug Name to be Searched </label>
+            <label for="drugName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugSearchForm.get('drugName').invalid
+            && (drugSearchForm.get('drugName').dirty || drugSearchForm.get('drugName').touched)">
+    <input id="drugName" type="text" formControlName="drugName" size="35">
+    <span class="tooltip-content">
+        Drug Name cannot be empty.
+    </span>
+</label>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="drugSearchForm.invalid">Search</button>
+        <button type="submit" class="btn btn-secondary">Clear</button>
+    </section>
+    
+    
+</form>
+
+<hr>
+
+<clr-datagrid>
+    <clr-dg-column>Drug Name</clr-dg-column>
+    <clr-dg-column>Drug Unit</clr-dg-column>
+    <clr-dg-column>Drug Current Quantity</clr-dg-column>
+    <clr-dg-column>Drug Reorder Quantity</clr-dg-column>
+    <clr-dg-column>Drug Price</clr-dg-column>
+    <clr-dg-row *ngFor="let drug of drugs">
+        <clr-dg-cell>{{drug.drug_name}}</clr-dg-cell>
+        <clr-dg-cell>{{drug.drug_unit}}</clr-dg-cell>
+        <clr-dg-cell>{{drug.drug_current_quantity}}</clr-dg-cell>
+        <clr-dg-cell>{{drug.drug_status_reorder}}</clr-dg-cell>
+        <clr-dg-cell>{{drug.drug_price}}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer *ngIf="drugs.length > 0">{{drugs.length}} search results</clr-dg-footer>
+    <clr-dg-footer *ngIf="drugs.length == 0" >No Search Results</clr-dg-footer>
+</clr-datagrid>

@@ -1,9 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule , } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http'
 import { ClarityModule } from "clarity-angular";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { ShowIfAuthedDirective } from './shared/show-if-authed.directive';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { DrugService } from './shared/services/drug.service';
+import { PharmDrugSearchComponent } from './pharm-drug/pharm-drug-search/pharm-drug-search.component';
 
 @NgModule({
   declarations: [
@@ -32,17 +34,23 @@ import { DrugService } from './shared/services/drug.service';
     PharmDrugUpdateComponent,
     HeaderNavComponent,
     ShowIfAuthedDirective,
-    LoginComponent
+    LoginComponent,
+    PharmDrugSearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    BrowserAnimationsModule,
     ClarityModule.forRoot(),
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
       { path: '', redirectTo: '/login', pathMatch: 'full' },
+      {
+        path: 'searchDrug',
+        component: PharmDrugSearchComponent
+      },
       { path: 'addDrug', component: PharmDrugAddComponent },
       {
         path: 'updateDrug',
