@@ -51,8 +51,7 @@ export class UserService {
     this.currentUserSubject.next(new User());
     // Set auth status to false
     this.isAuthenticatedSubject.next(false);
-
-    console.log("Came Heree")
+    
     this.isLogged = false;
   }
 

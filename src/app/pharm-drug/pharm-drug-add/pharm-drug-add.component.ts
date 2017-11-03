@@ -42,8 +42,13 @@ export class PharmDrugAddComponent implements OnInit {
       drug.drug_category_id = this.drugAddForm.get('drugCategory').value;
       console.log(drug);
       this.drugService.saveDrug(drug)
-      .subscribe(data => {
+      .subscribe((data) => {
         console.log(data);
+        alert("Drug Added Successfully...");
+        this.drugAddForm.reset();
+      },(error)=>{
+        alert("Drug Adding Failed");
+        this.drugAddForm.reset();
       })
       
     }

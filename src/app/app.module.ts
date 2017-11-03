@@ -8,10 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import { AppComponent } from './app.component';
-import { PharmDrugComponent } from './pharm-drug/pharm-drug.component';
 import { PharmDrugAddComponent } from './pharm-drug/pharm-drug-add/pharm-drug-add.component';
-import { CommonNavbarComponent } from './common-navbar/common-navbar.component';
-import { CommonSidebarComponent } from './common-sidebar/common-sidebar.component';
 import { PharmDrugUpdateComponent } from './pharm-drug/pharm-drug-update/pharm-drug-update.component';
 import { HeaderNavComponent } from './shared/header-nav/header-nav.component';
 import { UserService } from './shared/services/user.service';
@@ -27,10 +24,7 @@ import { PharmDrugSearchComponent } from './pharm-drug/pharm-drug-search/pharm-d
 @NgModule({
   declarations: [
     AppComponent,
-    PharmDrugComponent,
     PharmDrugAddComponent,
-    CommonNavbarComponent,
-    CommonSidebarComponent,
     PharmDrugUpdateComponent,
     HeaderNavComponent,
     ShowIfAuthedDirective,
