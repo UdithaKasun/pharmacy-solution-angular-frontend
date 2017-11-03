@@ -1,4 +1,31 @@
 <div class="main-container">
-  <app-header-nav *showIfAuthed="true"></app-header-nav>
-  <router-outlet></router-outlet>
-</div>
+    <app-header-nav *showIfAuthed="true"></app-header-nav>
+    <div class="content-container">
+        <div class="content-area">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- Sidebar for Navigation -->
+        <nav class="sidenav" *showIfAuthed="true">
+            <section class="sidenav-content">
+                <section class="nav-group collapsible">
+
+                    <label for="tabexample1">Drug Management</label>
+                    <ul class="nav-list">
+                        <li>
+                            <a class="nav-link">
+                                <clr-icon shape="search"></clr-icon> Search Drug</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" [routerLink]="['/addDrug']">
+                                <clr-icon shape="plus"></clr-icon> Add Drug</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" [routerLink]="['/updateDrug']">
+                                <clr-icon shape="pencil"></clr-icon> Update/Delete Drug</a>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+        </nav>
+        <!-- End Of Sidebar for Navigation -->
+    </div>

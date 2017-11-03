@@ -20,6 +20,7 @@ import { Http } from '@angular/http';
 import { ShowIfAuthedDirective } from './shared/show-if-authed.directive';
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
+import { DrugService } from './shared/services/drug.service';
 
 @NgModule({
   declarations: [
@@ -40,15 +41,16 @@ import { AuthGuardService } from './shared/services/auth-guard.service';
     HttpModule,
     ClarityModule.forRoot(),
     RouterModule.forRoot([
-      { path : 'login' , component : LoginComponent},
-      { path : '' , redirectTo : '/login' , pathMatch:'full'},
-      { path : 'addDrug' , component : PharmDrugAddComponent},
-      { path : 'updateDrug' , 
-      component : PharmDrugUpdateComponent,
-      canActivate : [AuthGuardService]},
+      { path: 'login', component: LoginComponent },
+      { path: '', redirectTo: '/login', pathMatch: 'full' },
+      { path: 'addDrug', component: PharmDrugAddComponent },
+      {
+        path: 'updateDrug',
+        component: PharmDrugUpdateComponent
+      },
     ])
   ],
-  providers: [UserService,ApiService,JwtService,AuthGuardService],
+  providers: [UserService,ApiService,JwtService,AuthGuardService,DrugService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
