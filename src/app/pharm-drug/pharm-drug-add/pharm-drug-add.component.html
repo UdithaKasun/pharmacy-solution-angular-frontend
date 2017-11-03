@@ -20,7 +20,7 @@
         <div class="form-group">
             <label for="drug_type_select">Drug Type</label>
             <div class="select">
-                <select id="drug_type_select">
+                <select id="drug_type_select" formControlName="drugType">
                     <option>Tablet</option>
                     <option>Syrup</option>
                 </select>
@@ -31,9 +31,9 @@
         <div class="form-group">
             <label for="drug_category_select">Drug Category</label>
             <div class="select">
-                <select id="drug_category_select">
+                <select id="drug_category_select" formControlName="drugCategory">
 
-                    <option *ngFor="let drugCategory of drugCategories">{{ drugCategory.category_name }}</option>
+                    <option *ngFor="let drugCategory of drugCategories" [ngValue]="drugCategory.category_id">{{ drugCategory.category_name }}</option>
                 </select>
             </div>
         </div>
