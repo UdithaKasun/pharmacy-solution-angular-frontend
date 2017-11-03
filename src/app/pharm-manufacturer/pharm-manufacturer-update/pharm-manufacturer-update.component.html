@@ -1,0 +1,96 @@
+<div class="box box-success">
+  <div class="box-body">
+    <div class="input-group">
+      <span class="glyphicon glyphicon-search input-group-addon"></span>
+      <input type="text" ng-model="searchkey" placeholder="Search Manufacturer" class="form-control"/>
+    </div>
+  </div>
+</div>
+
+    <div class="card search-detail-card">
+      <div class="card-header">
+        Test<!--{{manufacturer.manufacturer_name}}-->
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          Address :<!-- {{manufacturer.manufacturer_address}} --><br/>
+          Contact : <!--{{manufacturer.manufacturer_contact}} --><br/>
+          Email : <!--{{manufacturer.manufacturer_email}} --><br/>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button class="btn btn-sm btn-success" (click)="displayUpdateModal()">Update</button>
+        <button class="btn btn-sm btn-danger">Delete</button>
+      </div>
+    </div>
+
+    <!--Modal -->
+    <clr-modal [(clrModalOpen)]="updateModalDisplay" [clrModalSize]="'lg'" [clrModalClosable]="false" [clrModalStaticBackdrop]="true">
+        <h3 class="modal-title">Update Manufacturer</h3>
+        <div class="modal-body">
+          <form class="form" [formGroup]="ManufacturerUpdateForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
+            <section class="form-block">
+              <hr>
+
+              <!-- Manufacturer Name -->
+              <div class="form-group">
+                <label for="manufacturer_name">Manufacturer Name</label>
+                <label for="manufacturer_name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="ManufacturerUpdateForm.get('manufacturer_name').invalid
+                    && (ManufacturerUpdateForm.get('manufacturer_name').dirty || ManufacturerUpdateForm.get('manufacturer_name').touched)">
+                  <input id="manufacturer_name" type="text"
+                         formControlName="manufacturer_name" size="35">
+                  <span class="tooltip-content">
+                    Manufacturer Name cannot be empty.
+                </span>
+                </label>
+              </div>
+
+              <!-- Manufacturer Address -->
+              <div class="form-group">
+                <label for="manufacturer_address">Manufacturer Address</label>
+                <label for="manufacturer_address" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="ManufacturerUpdateForm.get('manufacturer_address').invalid
+                    && (ManufacturerUpdateForm.get('manufacturer_address').dirty || ManufacturerUpdateForm.get('manufacturer_address').touched)">
+                  <input id="manufacturer_address" type="text"
+                         formControlName="manufacturer_address" size="35">
+                  <span class="tooltip-content">
+                    Manufacturer Address cannot be empty.
+                </span>
+                </label>
+              </div>
+
+              <!-- Manufacturer Contact -->
+              <div class="form-group">
+                <label for="manufacturer_contact">Manufacturer Contact</label>
+                <label for="manufacturer_contact" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="ManufacturerUpdateForm.get('manufacturer_contact').invalid
+                    && (ManufacturerUpdateForm.get('manufacturer_contact').dirty || ManufacturerUpdateForm.get('manufacturer_contact').touched)">
+                  <input id="manufacturer_contact" type="text"
+                         formControlName="manufacturer_contact" size="35">
+                  <span class="tooltip-content">
+                    Manufacturer Contact Number cannot be empty.
+                </span>
+                </label>
+              </div>
+
+              <!-- Manufacturer Email -->
+              <div class="form-group">
+                <label for="manufacturer_email">Manufacturer Email</label>
+                <label for="manufacturer_email" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="ManufacturerUpdateForm.get('manufacturer_email').invalid
+                    && (ManufacturerUpdateForm.get('manufacturer_email').dirty || ManufacturerUpdateForm.get('manufacturer_email').touched)">
+                  <input id="manufacturer_email" type="text"
+                         formControlName="manufacturer_email" size="35">
+                  <span class="tooltip-content">
+                    Manufacturer Email cannot be empty.
+                </span>
+                </label>
+              </div>
+            </section>
+          </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning-outline" (click)="updateModalDisplay = false">Cancel</button>
+          <button type="button" class="btn btn-success" (click)="updateModalDisplay = false">Update</button>
+        </div>
+      </clr-modal>
+
+

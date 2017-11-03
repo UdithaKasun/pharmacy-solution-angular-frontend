@@ -1,0 +1,84 @@
+<form class="form" [formGroup]="customerAddForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
+  <section class="form-block">
+    <label><clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Add New Customer</label>
+    <hr>
+
+    <!-- Customer Name -->
+    <div class="form-group">
+      <label for="customer_name">Customer Name</label>
+      <label for="customer_name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="customerAddForm.get('customer_name').invalid
+                    && (customerAddForm.get('customer_name').dirty || customerAddForm.get('customer_name').touched)">
+        <input id="customer_name" type="text"
+               formControlName="customer_name" size="35">
+        <span class="tooltip-content">
+                    Customer Name cannot be empty.
+                </span>
+      </label>
+    </div>
+
+    <!-- Customer nic -->
+    <div class="form-group">
+      <label for="customer_nic">Customer NIC</label>
+      <label for="customer_nic" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"[class.invalid]="customerAddForm.get('customer_nic').invalid
+                    && (customerAddForm.get('customer_nic').dirty || customerAddForm.get('customer_nic').touched)">
+        <input id="customer_nic" type="number"
+               formControlName="customer_nic" size="35">
+        <span class="tooltip-content">
+                    Customer NIC cannot be empty.
+                </span>
+      </label>
+    </div>
+
+
+    <!-- Customer age -->
+    <div class="form-group">
+      <label for="customer_age">Customer Age</label>
+      <label for="customer_age" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"[class.invalid]="customerAddForm.get('customer_age').invalid
+                    && (customerAddForm.get('customer_age').dirty || customerAddForm.get('customer_age').touched)">
+        <input id="customer_age" type="number"
+               formControlName="customer_age" size="35">
+        <span class="tooltip-content">
+                    Customer Age cannot be empty.
+                </span>
+      </label>
+    </div>
+
+    <!-- Customer contact -->
+    <div class="form-group">
+      <label for="customer_contact">Customer Contact</label>
+      <label for="customer_contact" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"[class.invalid]="customerAddForm.get('customer_contact').invalid
+                    && (customerAddForm.get('customer_contact').dirty || customerAddForm.get('customer_contact').touched)">
+        <input id="customer_contact" type="number"
+               formControlName="customer_contact" size="35">
+        <span class="tooltip-content">
+                    Customer Contact cannot be empty.
+                </span>
+      </label>
+    </div>
+
+    <!-- Customer Address -->
+    <div class="form-group">
+      <label for="customer_address">Customer Address</label>
+      <label for="customer_address" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm">
+        <input id="customer_address" type="text"
+               formControlName="customer_address" size="35">
+      </label>
+    </div>
+
+    <!-- Customer Email -->
+    <div class="form-group">
+      <label for="customer_email">Customer Email</label>
+      <label for="customer_email" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"[class.invalid]="customerAddForm.get('customer_email').invalid">
+        <input id="customer_email" type="email"
+               formControlName="customer_email" size="35">
+        <span class="tooltip-content">
+                    Customer Email Not Valid.
+                </span>
+      </label>
+    </div>
+
+
+    <button class="btn btn-primary" type="submit">Add Customer</button>
+    <button class="btn btn-warning" type="submit">Reset</button>
+  </section>
+</form>

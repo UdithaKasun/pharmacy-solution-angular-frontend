@@ -1,0 +1,20 @@
+<form class="form" [formGroup]="drugRequestAddForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
+  <section class="form-block">
+    <label><clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Add New Drug Request</label>
+    <hr>
+
+    <!-- Supplier Name -->
+    <div class="form-group">
+      <label for="supplier_name_select">Supplier Name</label>
+      <div class="select">
+        <select id="supplier_name_select">
+          <option *ngFor="let supplier of supplierlist" value="{{supplier._id}}">{{supplier.supplier_name}}</option>
+          <option>Syrup</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Add Customer</button>
+    <button class="btn btn-warning" type="submit">Reset</button>
+  </section>
+</form>
