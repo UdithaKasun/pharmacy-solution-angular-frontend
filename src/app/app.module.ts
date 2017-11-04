@@ -24,6 +24,14 @@ import { PharmSupplierAddComponent } from './pharm-supplier/pharm-supplier-add/p
 import { PharmSupplierSearchComponent } from './pharm-supplier/pharm-supplier-search/pharm-supplier-search.component';
 import { PharmSupplierUpdateComponent } from './pharm-supplier/pharm-supplier-update/pharm-supplier-update.component';
 import { SupplierService } from './shared/services/supplier.service';
+import {PharmManufacturerComponent} from './pharm-manufacturer/pharm-manufacturer.component';
+import {PharmManufacturerAddComponent} from './pharm-manufacturer/pharm-manufacturer-add/pharm-manufacturer-add.component';
+import {PharmManufacturerUpdateComponent} from './pharm-manufacturer/pharm-manufacturer-update/pharm-manufacturer-update.component';
+import {PharmCustomerComponent} from './pharm-customer/pharm-customer.component';
+import {PharmCustomerAddComponent} from './pharm-customer/pharm-customer-add/pharm-customer-add.component';
+import {PharmCustomerUpdateComponent} from './pharm-customer/pharm-customer-update/pharm-customer-update.component';
+import {CustomerService} from './shared/services/customer.service';
+import {ManufacturerService} from './shared/services/manufacturer.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +44,11 @@ import { SupplierService } from './shared/services/supplier.service';
     PharmDrugSearchComponent,
     PharmSupplierAddComponent,
     PharmSupplierSearchComponent,
-    PharmSupplierUpdateComponent
+    PharmSupplierUpdateComponent,
+    PharmCustomerAddComponent,
+    PharmCustomerUpdateComponent,
+    PharmManufacturerAddComponent,
+    PharmManufacturerUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -64,10 +76,26 @@ import { SupplierService } from './shared/services/supplier.service';
       {
         path : 'updateSupplier', 
         component :PharmSupplierSearchComponent
+      },
+      {
+        path : 'addManufacturer', 
+        component :PharmManufacturerAddComponent
+      },
+      {
+        path : 'updateManufacturer', 
+        component :PharmManufacturerUpdateComponent
+      },
+      {
+        path : 'updateCustomer', 
+        component :PharmCustomerUpdateComponent
+      },
+      {
+        path : 'addCustomer', 
+        component :PharmCustomerAddComponent
       }
     ])
   ],
-  providers: [UserService,ApiService,JwtService,AuthGuardService,DrugService,SupplierService],
+  providers: [UserService,ApiService,JwtService,AuthGuardService,DrugService,SupplierService, CustomerService, ManufacturerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

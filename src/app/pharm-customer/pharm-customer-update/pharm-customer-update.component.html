@@ -1,0 +1,143 @@
+<!--<div class="box box-success">-->
+  <!--<div class="box-body">-->
+    <!--<div class="input-group">-->
+      <!--<span class="glyphicon glyphicon-search input-group-addon"></span>-->
+      <!--<input type="text" placeholder="Search Customer" class="form-control" ngModel=""/>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<form [formGroup]="customerSearchForm" (ngSubmit)="onSearch()">
+  <section class="form-block">
+    <label>
+      <clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Search Customer</label>
+    <hr>
+    <label>Search Criteria </label>
+    <div class="form-group">
+      <label class="required">Customer Name to be Searched </label>
+      <label for="search_customer_name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="customerSearchForm.get('search_customer_name').invalid">
+        <input id="search_customer_name" type="text" formControlName="search_customer_name" size="35">
+      </label>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="customerSearchForm.invalid">Search</button>
+    <button type="button" class="btn btn-secondary" (click)="customerSearchForm.reset()">Clear</button>
+  </section>
+
+
+</form>
+<div class="card search-detail-card" *ngFor="let customer of customerList">
+  <div class="card-header">
+    {{customer.customer_name}}
+  </div>
+  <div class="card-block">
+    <div class="card-text">
+      Age : {{customer.customer_age}}<br/>
+      NIC : {{customer.customer_nic}}<br/>
+      Address : {{customer.customer_address}}<br/>
+      Email : {{customer.customer_email}}<br/>
+      Contact : {{customer.customer_contact}}
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-sm btn-success" (click)="displayUpdateModal(customer)">Update</button>
+    <button class="btn btn-sm btn-danger" (click)="displayDeleteModal(customer)">Delete</button>
+  </div>
+</div>
+
+<clr-modal [(clrModalOpen)]="updateModalDisplay" [clrModalSize]="'lg'" [clrModalClosable]="false" [clrModalStaticBackdrop]="true">
+  <h3 class="modal-title">Update Customer</h3>
+  <div class="modal-body">
+    <form class="form" [formGroup]="customerUpdateForm" (ngSubmit)="onSubmit()">
+      <section class="form-block">
+
+        <!-- Customer Name -->
+        <div class="form-group">
+          <label for="customer_name">Customer Name</label>
+          <label for="customer_name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="customerUpdateForm.get('customer_name').invalid
+                    && (customerUpdateForm.get('customer_name').dirty || customerUpdateForm.get('customer_name').touched)">
+            <input id="customer_name" type="text"
+                   formControlName="customer_name" size="35">
+            <span class="tooltip-content">
+                    Customer Name cannot be empty.
+                </span>
+          </label>
+        </div>
+
+        <!-- Customer nic -->
+        <div class="form-group">
+          <label for="customer_nic">Customer NIC</label>
+          <label for="customer_nic" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"[class.invalid]="customerUpdateForm.get('customer_nic').invalid
+                    && (customerUpdateForm.get('customer_nic').dirty || customerUpdateForm.get('customer_nic').touched)">
+            <input id="customer_nic" type="text"
+                   formControlName="customer_nic" size="35">
+            <span class="tooltip-content">
+                    Customer NIC cannot be empty.
+                </span>
+          </label>
+        </div>
+
+        <!-- Customer Age -->
+        <div class="form-group">
+          <label for="customer_age">Customer Age</label>
+          <label for="customer_age" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="customerUpdateForm.get('customer_age').invalid
+                    && (customerUpdateForm.get('customer_age').dirty || customerUpdateForm.get('customer_age').touched)">
+            <input id="customer_age" type="number"
+                   formControlName="customer_age" size="35">
+            <span class="tooltip-content">
+                    Customer Age cannot be empty.
+                </span>
+          </label>
+        </div>
+
+        <!-- Customer contact -->
+        <div class="form-group">
+          <label for="customer_contact">Customer Contact</label>
+          <label for="customer_contact" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"[class.invalid]="customerUpdateForm.get('customer_contact').invalid
+                    && (customerUpdateForm.get('customer_contact').dirty || customerUpdateForm.get('customer_contact').touched)">
+            <input id="customer_contact" type="text"
+                   formControlName="customer_contact" size="35">
+            <span class="tooltip-content">
+                    Customer Contact cannot be empty.
+                </span>
+          </label>
+        </div>
+
+        <!-- Customer Address -->
+        <div class="form-group">
+          <label for="customer_address">Customer Address</label>
+          <label for="customer_address" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm">
+            <input id="customer_address" type="text"
+                   formControlName="customer_address" size="35">
+          </label>
+        </div>
+
+        <!-- Customer Email -->
+        <div class="form-group">
+          <label for="customer_email">Customer Email</label>
+          <label for="customer_email" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"[class.invalid]="customerUpdateForm.get('customer_email').invalid">
+            <input id="customer_email" type="email"
+                   formControlName="customer_email" size="35">
+            <span class="tooltip-content">
+                    Customer Email Not Valid.
+                </span>
+          </label>
+        </div>
+
+      </section>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-warning-outline" (click)="cancelCustomerUpdate()">Cancel</button>
+    <button type="button" class="btn btn-success" (click)="updateCustomer()">Update</button>
+  </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="deleteModalDisplay">
+  <h3 class="modal-title">Delete Customer</h3>
+  <div class="modal-body">
+    <p>Delete Customer : {{deleteCustomerForm?.customer_name}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="closeDeleteModal()">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="deleteCustomer()">Delete</button>
+  </div>
+</clr-modal>

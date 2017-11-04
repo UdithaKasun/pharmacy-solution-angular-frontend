@@ -25,6 +25,34 @@
                         </li>
                     </ul>
                 </section>
+                <section class="nav-group collapsible">
+                    <input id="tabexample2" type="checkbox">
+                    <label for="tabexample2">Customer Management</label>
+                    <ul class="nav-list">
+                        <li>
+                            <a class="nav-link" [routerLink]="['/addCustomer']">
+                                <clr-icon shape="plus"></clr-icon> Add Customer</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" [routerLink]="['/updateCustomer']">
+                                <clr-icon shape="pencil"></clr-icon> Update/Delete Customer</a>
+                        </li>
+                    </ul>
+                </section>
+                <section class="nav-group collapsible">
+                    <input id="tabexample3" type="checkbox">
+                    <label for="tabexample3">Manufacturer Management</label>
+                    <ul class="nav-list">
+                        <li>
+                            <a class="nav-link" [routerLink]="['/addManufacturer']">
+                                <clr-icon shape="plus"></clr-icon> Add Manufacturer</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" [routerLink]="['/updateManufacturer']">
+                                <clr-icon shape="pencil"></clr-icon> Update/Delete Manufacturer</a>
+                        </li>
+                    </ul>
+                </section>
             </section>
         </nav>
         <!-- End Of Sidebar for Navigation -->

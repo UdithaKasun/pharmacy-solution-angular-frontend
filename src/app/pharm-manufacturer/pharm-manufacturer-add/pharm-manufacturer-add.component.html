@@ -1,0 +1,61 @@
+<form class="form" [formGroup]="ManufacturerAddForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
+  <section class="form-block">
+    <label><clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Add New Manufacturer</label>
+    <hr>
+
+    <!-- Manufacturer Name -->
+    <div class="form-group">
+      <label for="manufacturer_name">Manufacturer Name</label>
+      <label for="manufacturer_name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="ManufacturerAddForm.get('manufacturer_name').invalid
+                    && (ManufacturerAddForm.get('manufacturer_name').dirty || ManufacturerAddForm.get('manufacturer_name').touched)">
+        <input id="manufacturer_name" type="text"
+               formControlName="manufacturer_name" size="35">
+        <span class="tooltip-content">
+                    Manufacturer Name cannot be empty.
+                </span>
+      </label>
+    </div>
+
+    <!-- Manufacturer Address -->
+    <div class="form-group">
+      <label for="manufacturer_address">Manufacturer Address</label>
+      <label for="manufacturer_address" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="ManufacturerAddForm.get('manufacturer_address').invalid
+                    && (ManufacturerAddForm.get('manufacturer_address').dirty || ManufacturerAddForm.get('manufacturer_address').touched)">
+        <input id="manufacturer_address" type="text"
+               formControlName="manufacturer_address" size="35">
+        <span class="tooltip-content">
+                    Manufacturer Address cannot be empty.
+                </span>
+      </label>
+    </div>
+
+    <!-- Manufacturer Contact -->
+    <div class="form-group">
+      <label for="manufacturer_contact">Manufacturer Contact</label>
+      <label for="manufacturer_contact" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="ManufacturerAddForm.get('manufacturer_contact').invalid
+                    && (ManufacturerAddForm.get('manufacturer_contact').dirty || ManufacturerAddForm.get('manufacturer_contact').touched)">
+        <input id="manufacturer_contact" type="text"
+               formControlName="manufacturer_contact" size="35">
+        <span class="tooltip-content">
+                    Manufacturer Contact Number cannot be empty.
+                </span>
+      </label>
+    </div>
+
+    <!-- Manufacturer Email -->
+    <div class="form-group">
+      <label for="manufacturer_email">Manufacturer Email</label>
+      <label for="manufacturer_email" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="ManufacturerAddForm.get('manufacturer_email').invalid
+                    && (ManufacturerAddForm.get('manufacturer_email').dirty || ManufacturerAddForm.get('manufacturer_email').touched)">
+        <input id="manufacturer_email" type="text"
+               formControlName="manufacturer_email" size="35">
+        <span class="tooltip-content">
+                    Manufacturer Email cannot be empty.
+                </span>
+      </label>
+    </div>
+
+    <button class="btn btn-primary" type="submit" (click)="addNewManufacturer()">Add Manufacturer</button>
+    <button class="btn btn-warning" type="submit">Reset</button>
+  </section>
+</form>
