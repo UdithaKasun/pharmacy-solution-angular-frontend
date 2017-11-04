@@ -18,11 +18,11 @@
 
     <!-- Manufacturer Address -->
     <div class="form-group">
-      <label for="    manufacturer_address">Manufacturer Address</label>
-      <label for="    manufacturer_address" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="ManufacturerAddForm.get('    manufacturer_address').invalid
-                    && (ManufacturerAddForm.get('    manufacturer_address').dirty || ManufacturerAddForm.get('    manufacturer_address').touched)">
-        <input id="    manufacturer_address" type="text"
-               formControlName="    manufacturer_address" size="35">
+      <label for="manufacturer_address">Manufacturer Address</label>
+      <label for="manufacturer_address" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="ManufacturerAddForm.get('manufacturer_address').invalid
+                    && (ManufacturerAddForm.get('manufacturer_address').dirty || ManufacturerAddForm.get('manufacturer_address').touched)">
+        <input id="manufacturer_address" type="text"
+               formControlName="manufacturer_address" size="35">
         <span class="tooltip-content">
                     Manufacturer Address cannot be empty.
                 </span>
@@ -55,7 +55,7 @@
       </label>
     </div>
 
-    <button class="btn btn-primary" type="submit">Add Manufacturer</button>
+    <button class="btn btn-primary" type="submit" (click)="addNewManufacturer()">Add Manufacturer</button>
     <button class="btn btn-warning" type="submit">Reset</button>
   </section>
 </form>

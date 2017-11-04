@@ -21,7 +21,7 @@
       <label for="customer_nic">Customer NIC</label>
       <label for="customer_nic" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"[class.invalid]="customerAddForm.get('customer_nic').invalid
                     && (customerAddForm.get('customer_nic').dirty || customerAddForm.get('customer_nic').touched)">
-        <input id="customer_nic" type="number"
+        <input id="customer_nic" type="text"
                formControlName="customer_nic" size="35">
         <span class="tooltip-content">
                     Customer NIC cannot be empty.
@@ -48,7 +48,7 @@
       <label for="customer_contact">Customer Contact</label>
       <label for="customer_contact" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"[class.invalid]="customerAddForm.get('customer_contact').invalid
                     && (customerAddForm.get('customer_contact').dirty || customerAddForm.get('customer_contact').touched)">
-        <input id="customer_contact" type="number"
+        <input id="customer_contact" type="text"
                formControlName="customer_contact" size="35">
         <span class="tooltip-content">
                     Customer Contact cannot be empty.
@@ -78,7 +78,7 @@
     </div>
 
 
-    <button class="btn btn-primary" type="submit">Add Customer</button>
-    <button class="btn btn-warning" type="submit">Reset</button>
+    <button class="btn btn-primary" type="submit" (click)="addNewCustomer()">Add Customer</button>
+    <button class="btn btn-warning" type="submit" (click)="resetCustomerForm()">Reset</button>
   </section>
 </form>

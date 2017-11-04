@@ -1,27 +1,45 @@
-<div class="box box-success">
-  <div class="box-body">
-    <div class="input-group">
-      <span class="glyphicon glyphicon-search input-group-addon"></span>
-      <input type="text" ng-model="searchkey" placeholder="Search Customer" class="form-control"/>
+<!--<div class="box box-success">-->
+  <!--<div class="box-body">-->
+    <!--<div class="input-group">-->
+      <!--<span class="glyphicon glyphicon-search input-group-addon"></span>-->
+      <!--<input type="text" placeholder="Search Customer" class="form-control" ngModel=""/>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+<form [formGroup]="customerSearchForm" (ngSubmit)="onSearch()">
+  <section class="form-block">
+    <label>
+      <clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Search Customer</label>
+    <hr>
+    <label>Search Criteria </label>
+    <div class="form-group">
+      <label class="required">Customer Name to be Searched </label>
+      <label for="search_customer_name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="customerSearchForm.get('search_customer_name').invalid">
+        <input id="search_customer_name" type="text" formControlName="search_customer_name" size="35">
+      </label>
     </div>
-  </div>
-</div>
-<div class="card search-detail-card">
+    <button type="submit" class="btn btn-success" [disabled]="customerSearchForm.invalid">Search</button>
+    <button type="button" class="btn btn-secondary" (click)="customerSearchForm.reset()">Clear</button>
+  </section>
+
+
+</form>
+<div class="card search-detail-card" *ngFor="let customer of customerList">
   <div class="card-header">
-    Waruna <!--{{customer.customer_name}}-->
+    {{customer.customer_name}}
   </div>
   <div class="card-block">
     <div class="card-text">
-      Age : 33 <!--{{customer.customer_age}}--><br/>
-      NIC : 924548465 <!--{{customer.customer_nic}}--><br/>
-      Address : bkjbhjb <!--{{customer.customer_address}}--><br/>
-      Email : jbhkbjk <!--{{customer.customer_email}}--><br/>
-      Contact : 090526544 <!--{{customer.customer_contact}}-->
+      Age : {{customer.customer_age}}<br/>
+      NIC : {{customer.customer_nic}}<br/>
+      Address : {{customer.customer_address}}<br/>
+      Email : {{customer.customer_email}}<br/>
+      Contact : {{customer.customer_contact}}
     </div>
   </div>
   <div class="card-footer">
-    <button class="btn btn-sm btn-success" (click)="displayUpdateModal()">Update</button>
-    <button class="btn btn-sm btn-danger">Delete</button>
+    <button class="btn btn-sm btn-success" (click)="displayUpdateModal(customer)">Update</button>
+    <button class="btn btn-sm btn-danger" (click)="displayDeleteModal(customer)">Delete</button>
   </div>
 </div>
 
@@ -40,6 +58,19 @@
                    formControlName="customer_name" size="35">
             <span class="tooltip-content">
                     Customer Name cannot be empty.
+                </span>
+          </label>
+        </div>
+
+        <!-- Customer nic -->
+        <div class="form-group">
+          <label for="customer_nic">Customer NIC</label>
+          <label for="customer_nic" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"[class.invalid]="customerUpdateForm.get('customer_nic').invalid
+                    && (customerUpdateForm.get('customer_nic').dirty || customerUpdateForm.get('customer_nic').touched)">
+            <input id="customer_nic" type="text"
+                   formControlName="customer_nic" size="35">
+            <span class="tooltip-content">
+                    Customer NIC cannot be empty.
                 </span>
           </label>
         </div>
@@ -97,5 +128,16 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-warning-outline" (click)="cancelCustomerUpdate()">Cancel</button>
     <button type="button" class="btn btn-success" (click)="updateCustomer()">Update</button>
+  </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="deleteModalDisplay">
+  <h3 class="modal-title">Delete Customer</h3>
+  <div class="modal-body">
+    <p>Delete Customer : {{deleteCustomerForm?.customer_name}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="closeDeleteModal()">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="deleteCustomer()">Delete</button>
   </div>
 </clr-modal>
