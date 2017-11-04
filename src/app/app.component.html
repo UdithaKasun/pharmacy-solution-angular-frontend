@@ -31,9 +31,33 @@
                     </ul>
                 </section>
                 <section class="nav-group collapsible">
+                    
+                                        <label for="tabexample1">Supplier Management</label>
+                                        <ul class="nav-list">
+                                            <li>
+                                                <a class="nav-link" [routerLink]="['/addSupplier']">
+                                                    <clr-icon shape="search"></clr-icon> Add Supplier</a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link" [routerLink]="['/updateSupplier']">
+                                                    <clr-icon shape="plus"></clr-icon> Update Supplier</a>
+                                            </li>
+                                            <li>
+                                                    <a class="nav-link" [routerLink]="['/viewDrugStock']">
+                                                        <clr-icon shape="pencil"></clr-icon> View Drug Stock</a>
+                                                </li>
+                                            
+                                        </ul>
+                                    </section>
+                                    
+                <section class="nav-group collapsible">
                     <input id="tabexample2" type="checkbox">
                     <label for="tabexample2">Customer Management</label>
                     <ul class="nav-list">
+                            <li>
+                                    <a class="nav-link" [routerLink]="['/searchCustomer']">
+                                        <clr-icon shape="search"></clr-icon> Search Customer</a>
+                                </li>
                         <li>
                             <a class="nav-link" [routerLink]="['/addCustomer']">
                                 <clr-icon shape="plus"></clr-icon> Add Customer</a>
@@ -48,6 +72,10 @@
                     <input id="tabexample3" type="checkbox">
                     <label for="tabexample3">Manufacturer Management</label>
                     <ul class="nav-list">
+                            <li>
+                                    <a class="nav-link" [routerLink]="['/searchManufacturer']">
+                                        <clr-icon shape="search"></clr-icon> Search Manufacturer</a>
+                                        </li>
                         <li>
                             <a class="nav-link" [routerLink]="['/addManufacturer']">
                                 <clr-icon shape="plus"></clr-icon> Add Manufacturer</a>

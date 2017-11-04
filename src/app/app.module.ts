@@ -33,6 +33,8 @@ import {PharmCustomerUpdateComponent} from './pharm-customer/pharm-customer-upda
 import {CustomerService} from './shared/services/customer.service';
 import {ManufacturerService} from './shared/services/manufacturer.service';
 import { PharmDrugStockComponent } from './pharm-drug/pharm-drug-stock/pharm-drug-stock.component';
+import { PharmManufacturerSearchComponent } from './pharm-manufacturer/pharm-manufacturer-search/pharm-manufacturer-search.component';
+import { PharmCustomerSearchComponent } from './pharm-customer/pharm-customer-search/pharm-customer-search.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { PharmDrugStockComponent } from './pharm-drug/pharm-drug-stock/pharm-dru
     PharmCustomerUpdateComponent,
     PharmManufacturerAddComponent,
     PharmManufacturerUpdateComponent,
-    PharmDrugStockComponent
+    PharmDrugStockComponent,
+    PharmCustomerSearchComponent,
+    PharmManufacturerSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -98,6 +102,14 @@ import { PharmDrugStockComponent } from './pharm-drug/pharm-drug-stock/pharm-dru
       {
         path : 'viewDrugStock', 
         component :PharmDrugStockComponent
+      },
+      {
+        path : 'searchManufacturer', 
+        component :PharmManufacturerSearchComponent
+      },
+      {
+        path : 'searchCustomer', 
+        component : PharmCustomerSearchComponent
       }
     ])
   ],

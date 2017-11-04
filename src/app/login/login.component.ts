@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     
     this.loginService.attemptLogin(user)
     .subscribe((data) => {
-      this.router.navigate(['/updateDrug']);
+      this.router.navigate(['/searchDrug']);
     }, (err) => {
       this.invalidCredentials = true;
     });

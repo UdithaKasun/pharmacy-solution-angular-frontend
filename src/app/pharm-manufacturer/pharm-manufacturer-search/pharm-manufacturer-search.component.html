@@ -1,0 +1,31 @@
+<form [formGroup]="manufacturerSearchForm" (ngSubmit)="onSearch()">
+  <section class="form-block">
+    <label>
+      <clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Search Manufacturer</label>
+    <hr>
+    <div class="form-group">
+      <label class="required">Manufacturer Name to be Searched </label>
+      <label for="search_manufacturer_name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="manufacturerSearchForm.get('search_manufacturer_name').invalid">
+        <input id="search_manufacturer_name" type="text" formControlName="search_manufacturer_name" size="35">
+      </label>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="manufacturerSearchForm.invalid">Search</button>
+    <button type="button" class="btn btn-secondary" (click)="clearSearch()">Clear</button>
+  </section>
+
+
+</form>
+
+  <div class="card search-detail-card" *ngFor="let manufacturer of manufacturerList">
+    <div class="card-header">
+      {{manufacturer.manufacturer_name}}
+    </div>
+    <div class="card-block">
+      <div class="card-text">
+        Address :{{manufacturer.manufacturer_address}} <br/>
+        Contact : {{manufacturer.manufacturer_contact}} <br/>
+        Email : {{manufacturer.manufacturer_email}} <br/>
+      </div>
+    </div>
+
+  </div>

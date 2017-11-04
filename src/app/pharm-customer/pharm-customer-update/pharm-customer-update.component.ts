@@ -56,6 +56,14 @@ export class PharmCustomerUpdateComponent implements OnInit {
     this.loadCustomers();
   }
 
+
+
+  clearSearch(): void{
+    this.customerSearchForm.reset();
+    this.loadCustomers();
+  }
+
+
   onSearch() {
     var searchKeyword = this.customerSearchForm.get('search_customer_name').value.toLowerCase();
     console.log(searchKeyword);

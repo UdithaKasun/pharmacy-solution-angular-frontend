@@ -1,0 +1,32 @@
+<form [formGroup]="customerSearchForm" (ngSubmit)="onSearch()">
+  <section class="form-block">
+    <label>
+      <clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Search Customer</label>
+    <hr>
+    <label>Search Criteria </label>
+    <div class="form-group">
+      <label class="required">Customer Name to be Searched </label>
+      <label for="search_customer_name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="customerSearchForm.get('search_customer_name').invalid">
+        <input id="search_customer_name" type="text" formControlName="search_customer_name" size="35">
+      </label>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="customerSearchForm.invalid">Search</button>
+    <button type="button" class="btn btn-secondary" (click)="clearSearch()">Clear</button>
+  </section>
+
+
+</form>
+<div class="card search-detail-card" *ngFor="let customer of customerList">
+  <div class="card-header">
+    {{customer.customer_name}}
+  </div>
+  <div class="card-block">
+    <div class="card-text">
+      Age : {{customer.customer_age}}<br/>
+      NIC : {{customer.customer_nic}}<br/>
+      Address : {{customer.customer_address}}<br/>
+      Email : {{customer.customer_email}}<br/>
+      Contact : {{customer.customer_contact}}
+    </div>
+  </div>
+</div>
