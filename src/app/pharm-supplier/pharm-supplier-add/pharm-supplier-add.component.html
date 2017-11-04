@@ -1,0 +1,114 @@
+<form class="form" [formGroup]="drugAddSupplier" [hidden]="submitted">
+  <section class="form-block">
+    <label>
+      <clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Add New Supplier</label>
+    <hr>
+
+    <!-- Supplier Name -->
+    <div class="form-group">
+      <label for="supplierName">Supplier Name</label>
+      <label for="supplierName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddSupplier.get('supplierName').invalid
+                        && (drugAddSupplier.get('supplierName').dirty || drugAddSupplier.get('supplierName').touched)">
+        <input id="supplierName" type="text" formControlName="supplierName" size="35">
+        <span class="tooltip-content">
+          Supplier Name cannot be empty.
+        </span>
+      </label>
+    </div>
+
+    <!-- Supplier Contact Number -->
+    <div class="form-group">
+      <label for="supplierContactNumber">Supplier Contact Number</label>
+      <label for="supplierContactNumber" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddSupplier.get('supplierContactNumber').invalid
+                        && (drugAddSupplier.get('supplierContactNumber').dirty || drugAddSupplier.get('supplierContactNumber').touched)">
+        <input id="supplierContactNumber" type="text" formControlName="supplierContactNumber" size="35">
+        <span class="tooltip-content">
+          Supplier Contact Number cannot be empty.
+        </span>
+      </label>
+    </div>
+
+    <!-- Supplier Contact Email -->
+    <div class="form-group">
+      <label for="supplierContactEmail">Supplier Contact Address</label>
+      <label for="supplierContactEmail" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddSupplier.get('supplierContactEmail').invalid
+                      && (drugAddSupplier.get('supplierContactEmail').dirty || drugAddSupplier.get('supplierContactEmail').touched)">
+        <input id="supplierContactEmail" type="text" formControlName="supplierContactEmail" size="35">
+        <span class="tooltip-content">
+          Supplier Email Address cannot be empty.
+        </span>
+      </label>
+    </div>
+
+    <!-- Supplier Payment Details -->
+    <label for="supplierPayementDetails">Supplier Payment Details</label>
+    <button class="btn btn-outline" (click)="showPaymentAdder()">Add Payment Detail</button>
+    <clr-datagrid>
+        <clr-dg-column>Payment Name</clr-dg-column>
+        <clr-dg-column>Bank Name</clr-dg-column>
+        <clr-dg-column>Bank Account Number</clr-dg-column>
+        <clr-dg-column>Remove</clr-dg-column>
+        <clr-dg-row *ngFor="let payment of paymentDetails">
+            <clr-dg-cell>{{payment.payment_name}}</clr-dg-cell>
+            <clr-dg-cell>{{payment.payment_bank_name}}</clr-dg-cell>
+            <clr-dg-cell>{{payment.payment_bank_account_number}}</clr-dg-cell>
+            <clr-dg-cell><button class="btn btn-danger-outline" (click)="removePayment(payment)">Remove Payment</button></clr-dg-cell>
+        </clr-dg-row>
+    
+        <clr-dg-footer>{{paymentDetails.length}} Payment Details</clr-dg-footer>
+    </clr-datagrid>
+
+
+
+    <button class="btn btn-primary" type="button" [disabled]="drugAddSupplier.invalid" (click)="saveSupplier()">Add Supplier</button>
+    <button class="btn btn-warning" type="reset">Reset</button>
+  </section>
+</form>
+
+<!-- Update Modal -->
+<clr-modal [(clrModalOpen)]="showBankPaymentAdd" [clrModalSize]="'lg'">
+    <h3 class="modal-title">Add Payment Detail</h3>
+    <div class="modal-body">
+        <form class="form" [formGroup]="drugAddBankPayment" (ngSubmit)="addPayment()">
+            <section class="form-block">
+                <!-- Payment Name -->
+                <div class="form-group">
+                    <label for="paymentName">Payment Name</label>
+                    <label for="paymentName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddBankPayment.get('paymentName').invalid
+                                                && (drugAddBankPayment.get('paymentName').dirty || drugAddBankPayment.get('paymentName').touched)">
+                        <input id="paymentName" type="text" formControlName="paymentName" size="35">
+                        <span class="tooltip-content">
+                            Payment Name cannot be empty.
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Payment Bank Name-->
+                <div class="form-group">
+                    <label for="bankName">Bank Name</label>
+                    <label for="bankName" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddBankPayment.get('bankName').invalid
+                                                && (drugAddBankPayment.get('bankName').dirty || drugAddBankPayment.get('bankName').touched)">
+                        <input id="bankName" type="text" formControlName="bankName" size="35">
+                        <span class="tooltip-content">
+                            Payment Bank Name cannot be empty.
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Payment Bank Account -->
+                <div class="form-group">
+                    <label for="bankAccount">Bank Account Number</label>
+                    <label for="bankAccount" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="drugAddBankPayment.get('bankAccount').invalid
+                                                && (drugAddBankPayment.get('bankAccount').dirty || drugAddBankPayment.get('bankAccount').touched)">
+                        <input id="bankAccount" type="text" formControlName="bankAccount" size="35">
+                        <span class="tooltip-content">
+                            Payment Account cannot be empty.
+                        </span>
+                    </label>
+                </div>
+    
+                <button class="btn btn-primary" type="button" [disabled]="drugAddBankPayment.invalid || !drugAddBankPayment.dirty" (click)="addPayment()">Add Payment</button>
+            </section>
+        </form>
+    </div>
+</clr-modal>

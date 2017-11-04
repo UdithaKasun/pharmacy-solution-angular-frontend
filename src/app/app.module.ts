@@ -20,6 +20,10 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { DrugService } from './shared/services/drug.service';
 import { PharmDrugSearchComponent } from './pharm-drug/pharm-drug-search/pharm-drug-search.component';
+import { PharmSupplierAddComponent } from './pharm-supplier/pharm-supplier-add/pharm-supplier-add.component';
+import { PharmSupplierSearchComponent } from './pharm-supplier/pharm-supplier-search/pharm-supplier-search.component';
+import { PharmSupplierUpdateComponent } from './pharm-supplier/pharm-supplier-update/pharm-supplier-update.component';
+import { SupplierService } from './shared/services/supplier.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,10 @@ import { PharmDrugSearchComponent } from './pharm-drug/pharm-drug-search/pharm-d
     HeaderNavComponent,
     ShowIfAuthedDirective,
     LoginComponent,
-    PharmDrugSearchComponent
+    PharmDrugSearchComponent,
+    PharmSupplierAddComponent,
+    PharmSupplierSearchComponent,
+    PharmSupplierUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +57,17 @@ import { PharmDrugSearchComponent } from './pharm-drug/pharm-drug-search/pharm-d
         path: 'updateDrug',
         component: PharmDrugUpdateComponent
       },
+      {
+        path : 'addSupplier', 
+        component :PharmSupplierAddComponent
+      },
+      {
+        path : 'updateSupplier', 
+        component :PharmSupplierSearchComponent
+      }
     ])
   ],
-  providers: [UserService,ApiService,JwtService,AuthGuardService,DrugService],
+  providers: [UserService,ApiService,JwtService,AuthGuardService,DrugService,SupplierService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

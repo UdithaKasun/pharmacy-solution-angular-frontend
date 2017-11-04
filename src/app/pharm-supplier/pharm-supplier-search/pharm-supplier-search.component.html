@@ -1,0 +1,58 @@
+<form [formGroup]="supplierUpdateForm">
+    <section class="form-block">
+        <label>
+            <clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Update Supplier</label>
+        <hr>
+        <label>Search Criteria </label>
+        <div class="form-group">
+            <label class="required">Supplier Name to be Searched </label>
+            <label for="searchSupplier" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="supplierUpdateForm.get('searchSupplier').invalid
+                && (supplierUpdateForm.get('searchSupplier').dirty || supplierUpdateForm.get('searchSupplier').touched)">
+                <input id="drugName" type="text" formControlName="searchSupplier" size="35">
+                <span class="tooltip-content">
+                    Supplier Name Cannot Be Empty
+                </span>
+            </label>
+        </div>
+        <button type="button" class="btn btn-primary" (click)="searchSuppliers()" [disabled]="supplierUpdateForm.invalid">Search</button>
+        <button type="button" class="btn btn-secondary">Clear</button>
+    </section>
+</form>
+
+<hr>
+
+<div class="card search-detail-card" *ngFor="let supplier of supplierList">
+    <div class="card-header">
+      {{supplier.supplier_name}}
+    </div>
+    <div class="card-block">
+      <div class="card-text">
+        Contact Number  : {{supplier.supplier_contact_number}}<br/>
+        Email Address : {{supplier.supplier_contact_email_address}}<br/>
+        Payment Details : <button class="btn btn-primary btn-sm" (click)="displayPaymentDetails(supplier.supplier_payment_details)">View Payment Details</button> <br/>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-sm btn-success" >Update</button>
+      <button class="btn btn-sm btn-danger" (click)="displayDeleteModal(customer)">Delete</button>
+    </div>
+  </div>
+
+  <!-- Update Modal -->
+<clr-modal [(clrModalOpen)]="showUpdate" [clrModalSize]="'lg'">
+    <h3 class="modal-title">Supplier Payment Details</h3>
+    <div class="modal-body">
+        <clr-datagrid>
+            <clr-dg-column>Payment Name</clr-dg-column>
+            <clr-dg-column>Bank Name</clr-dg-column>
+            <clr-dg-column>Bank Account Number</clr-dg-column>
+            <clr-dg-row *ngFor="let payment of paymentDetails">
+                <clr-dg-cell>{{payment.payment_name}}</clr-dg-cell>
+                <clr-dg-cell>{{payment.payment_bank_name}}</clr-dg-cell>
+                <clr-dg-cell>{{payment.payment_bank_account_number}}</clr-dg-cell>
+            </clr-dg-row>
+            <clr-dg-footer *ngIf="paymentDetails.length > 0">{{paymentDetails.length}} Payment Details</clr-dg-footer>
+            <clr-dg-footer *ngIf="paymentDetails.length == 0">No Payment Details</clr-dg-footer>
+        </clr-datagrid>
+    </div>
+</clr-modal>
