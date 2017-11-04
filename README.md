@@ -1,4 +1,4 @@
-# PharmacyApp
+# Pharmacy Solution Frontend with Angular 4+ - 3rd Year 2nd Semester
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.3.
 
