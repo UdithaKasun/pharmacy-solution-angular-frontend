@@ -1,0 +1,74 @@
+<form class="form" [formGroup]="supplierAddForm" (ngSubmit)="onSubmit()" [hidden]="submitted">
+  <section class="form-block">
+    <label><clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Add New Supplier</label>
+    <hr>
+
+    <!-- Supplier Name -->
+    <div class="form-group">
+      <label for="supplier_name">Supplier Name</label>
+      <label for="supplier_name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="supplierAddForm.get('supplier_name').invalid
+                    && (supplierAddForm.get('supplier_name').dirty || supplierAddForm.get('supplier_name').touched)">
+        <input id="supplier_name" type="text"
+               formControlName="supplier_name" size="35">
+        <span class="tooltip-content">
+                    Supplier Name cannot be empty.
+                </span>
+      </label>
+    </div>
+
+    <!-- Supplier contact -->
+    <div class="form-group">
+      <label for="supplier_contact_number">Supplier Contact</label>
+      <label for="supplier_contact_number" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"[class.invalid]="supplierAddForm.get('supplier_contact_number').invalid
+                    && (supplierAddForm.get('supplier_contact_number').dirty || supplierAddForm.get('supplier_contact_number').touched)">
+        <input id="supplier_contact_number" type="number"
+               formControlName="supplier_contact_number" size="35">
+        <span class="tooltip-content">
+                    Supplier Contact cannot be empty.
+                </span>
+      </label>
+    </div>
+
+    <!-- Supplier Address -->
+    <div class="form-group">
+      <label for="supplier_contact_address">Supplier Address</label>
+      <label for="supplier_contact_address" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm">
+        <input id="supplier_contact_address" type="text"
+               formControlName="supplier_contact_address" size="35">
+      </label>
+    </div>
+
+    <!-- Supplier Email -->
+    <div class="form-group">
+      <label for="supplier_contact_email_address">Supplier Email</label>
+      <label for="supplier_contact_email_address" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm"[class.invalid]="supplierAddForm.get('supplier_contact_email_address').invalid">
+        <input id="supplier_contact_email_address" type="email"
+               formControlName="supplier_contact_email_address" size="35">
+        <span class="tooltip-content">
+                    Supplier Email Not Valid.
+                </span>
+      </label>
+    </div>
+
+    <!-- Supplier Active -->
+    <div class="form-group">
+      <label for="supplier_active">Supplier Active</label>
+        <div class="toggle-switch">
+          <input type="checkbox" id="supplier_active" formControlName="supplier_active">
+          <label for="supplier_active"></label>
+        </div>
+    </div>
+
+    <!-- Supplier Address -->
+    <div class="form-group">
+      <label for="supplier_remarks">Supplier Remarks</label>
+      <label for="supplier_remarks" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm">
+        <input id="supplier_remarks" type="text"
+               formControlName="supplier_remarks" size="35">
+      </label>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Add Supplier</button>
+    <button class="btn btn-warning" type="submit">Reset</button>
+  </section>
+</form>
