@@ -1,0 +1,21 @@
+<div class="toggle-switch">
+    <input type="checkbox" id="toggle_1" [(ngModel)]="lowStockDrugs" (change)="toggleStatus()">
+    <label for="toggle_1">View Low Stock Drugs Only</label>
+</div>
+<clr-datagrid>
+    <clr-dg-column>Drug Name</clr-dg-column>
+    <clr-dg-column>Drug Unit</clr-dg-column>
+    <clr-dg-column>Drug Current Quantity</clr-dg-column>
+    <clr-dg-column>Drug Reorder Quantity</clr-dg-column>
+    <clr-dg-column>Drug Price</clr-dg-column>
+    <clr-dg-row *ngFor="let drug of drugs">
+        <clr-dg-cell>{{drug.drug_name}}</clr-dg-cell>
+        <clr-dg-cell>{{drug.drug_unit}}</clr-dg-cell>
+        <clr-dg-cell>{{drug.drug_current_quantity}}</clr-dg-cell>
+        <clr-dg-cell>{{drug.drug_status_reorder}}</clr-dg-cell>
+        <clr-dg-cell>{{drug.drug_price}}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer *ngIf="drugs.length > 0">{{drugs.length}} search results</clr-dg-footer>
+    <clr-dg-footer *ngIf="drugs.length == 0" >No Search Results</clr-dg-footer>
+</clr-datagrid>
