@@ -10,10 +10,10 @@
         </label>
       </div>
       <button type="submit" class="btn btn-success" [disabled]="manufacturerSearchForm.invalid">Search</button>
-      <button type="button" class="btn btn-secondary" (click)="manufacturerSearchForm.reset()">Clear</button>
+      <button type="button" class="btn btn-secondary" (click)="clearSearch()">Clear</button>
     </section>
-  
-  
+
+
   </form>
 
     <div class="card search-detail-card" *ngFor="let manufacturer of manufacturerList">
@@ -112,6 +112,6 @@
         <button type="button" class="btn btn-danger" (click)="deleteManufacturer()">Delete</button>
       </div>
     </clr-modal>
-    
+
 
 

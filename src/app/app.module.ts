@@ -35,6 +35,8 @@ import {ShowIfAuthedDirective} from './shared/show-if-authed.directive';
 import {AuthGuardService} from './shared/services/auth-guard.service';
 import {CustomerService} from './shared/services/customer.service';
 import {ManufacturerService} from './shared/services/manufacturer.service';
+import { PharmManufacturerSearchComponent } from './pharm-manufacturer/pharm-manufacturer-search/pharm-manufacturer-search.component';
+import { PharmCustomerSearchComponent } from './pharm-customer/pharm-customer-search/pharm-customer-search.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,10 @@ import {ManufacturerService} from './shared/services/manufacturer.service';
     PharmSupplierAddComponent,
     PharmSupplierUpdateComponent,
     HeaderNavComponent,
-    ShowIfAuthedDirective
+    ShowIfAuthedDirective,
+    PharmManufacturerSearchComponent,
+    PharmCustomerSearchComponent,
+    PharmManufacturerSearchComponent
   ],
   imports: [
     BrowserModule,

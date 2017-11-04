@@ -53,6 +53,13 @@ export class PharmManufacturerUpdateComponent implements OnInit {
     this.loadManufacturers();
   }
 
+
+  clearSearch(): void{
+    this.manufacturerSearchForm.reset();
+    this.loadManufacturers();
+  }
+
+
   onSearch() {
     var searchKeyword = this.manufacturerSearchForm.get('search_manufacturer_name').value.toLowerCase();
     console.log(searchKeyword);
