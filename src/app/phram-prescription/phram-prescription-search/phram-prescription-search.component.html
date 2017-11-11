@@ -1,0 +1,62 @@
+<form [formGroup]="prescriptionSearchForm" (ngSubmit)="onSearch()">
+  <section class="form-block">
+    <label>
+      <clr-icon shape="floppy" class="has-badge is-solid"></clr-icon> Search Prescription</label>
+    <hr>
+    <div class="form-group">
+      <label class="required">Patient Name to be Searched </label>
+      <label for="search_patient_name" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-sm" [class.invalid]="prescriptionSearchForm.get('search_patient_name').invalid
+            && (prescriptionSearchForm.get('search_patient_name').dirty || prescriptionSearchForm.get('search_patient_name').touched)">
+        <input id="search_patient_name" type="text" formControlName="search_patient_name" size="35">
+      </label>
+    </div>
+    <button type="submit" class="btn btn-success" [disabled]="prescriptionSearchForm.invalid">Search</button>
+    <button type="button" class="btn btn-secondary" (click)="clearSearch()">Clear</button>
+  </section>
+
+
+</form>
+
+<div class="card search-detail-card" *ngFor="let prescription of prescriptions">
+  <div class="card-header">
+    {{prescription.prescription_patient_name}}
+  </div>
+  <div class="card-block">
+    <div class="card-text">
+      Prescription  :{{prescription.prescription_id}}
+      <br/> Gender :{{prescription.prescription_patient_gender}}
+      <br/> Age : {{prescription.prescription_patient_age}}
+      <br/> Remark : {{prescription.prescription_patient_remark}}
+      <br/>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <button class="btn btn-sm btn-success" (click)="displayViewModal(prescription)">View Details</button>
+  </div>
+
+</div>
+
+<clr-modal [(clrModalOpen)]="viewModalDisplay" [clrModalSize]="'lg'"  [clrModalStaticBackdrop]="true">
+  <h3 class="modal-title">View Prescription Details</h3>
+  <div class="modal-body">
+    <clr-datagrid>
+      <clr-dg-column>Drug Name</clr-dg-column>
+      <clr-dg-column>Frequency</clr-dg-column>
+      <clr-dg-column>Dosage</clr-dg-column>
+      <clr-dg-column>Period</clr-dg-column>
+      <clr-dg-column>Quantity</clr-dg-column>
+      <clr-dg-row *ngFor="let drug of prescription_drugs; let drugIndex = index">
+          <clr-dg-cell>{{drug.prescription_item_drug_name}}</clr-dg-cell>
+          <clr-dg-cell>{{drug.prescription_item_frequency}}</clr-dg-cell>
+          <clr-dg-cell>{{drug.prescription_item_dosage}}</clr-dg-cell>
+          <clr-dg-cell>{{drug.prescription_item_period}}</clr-dg-cell>
+          <clr-dg-cell>{{drug.prescription_item_quantity}}</clr-dg-cell>
+      </clr-dg-row>
+  
+  </clr-datagrid>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="closeviewModal()">Cancel</button>
+  </div>
+</clr-modal>

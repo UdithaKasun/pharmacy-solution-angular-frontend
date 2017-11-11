@@ -1,4 +1,4 @@
-import { BrowserModule , } from '@angular/platform-browser';
+import { BrowserModule, } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http'
@@ -24,17 +24,23 @@ import { PharmSupplierAddComponent } from './pharm-supplier/pharm-supplier-add/p
 import { PharmSupplierSearchComponent } from './pharm-supplier/pharm-supplier-search/pharm-supplier-search.component';
 import { PharmSupplierUpdateComponent } from './pharm-supplier/pharm-supplier-update/pharm-supplier-update.component';
 import { SupplierService } from './shared/services/supplier.service';
-import {PharmManufacturerComponent} from './pharm-manufacturer/pharm-manufacturer.component';
-import {PharmManufacturerAddComponent} from './pharm-manufacturer/pharm-manufacturer-add/pharm-manufacturer-add.component';
-import {PharmManufacturerUpdateComponent} from './pharm-manufacturer/pharm-manufacturer-update/pharm-manufacturer-update.component';
-import {PharmCustomerComponent} from './pharm-customer/pharm-customer.component';
-import {PharmCustomerAddComponent} from './pharm-customer/pharm-customer-add/pharm-customer-add.component';
-import {PharmCustomerUpdateComponent} from './pharm-customer/pharm-customer-update/pharm-customer-update.component';
-import {CustomerService} from './shared/services/customer.service';
-import {ManufacturerService} from './shared/services/manufacturer.service';
+import { PharmManufacturerComponent } from './pharm-manufacturer/pharm-manufacturer.component';
+import { PharmManufacturerAddComponent } from './pharm-manufacturer/pharm-manufacturer-add/pharm-manufacturer-add.component';
+import { PharmManufacturerUpdateComponent } from './pharm-manufacturer/pharm-manufacturer-update/pharm-manufacturer-update.component';
+import { PharmCustomerComponent } from './pharm-customer/pharm-customer.component';
+import { PharmCustomerAddComponent } from './pharm-customer/pharm-customer-add/pharm-customer-add.component';
+import { PharmCustomerUpdateComponent } from './pharm-customer/pharm-customer-update/pharm-customer-update.component';
+import { CustomerService } from './shared/services/customer.service';
+import { ManufacturerService } from './shared/services/manufacturer.service';
 import { PharmDrugStockComponent } from './pharm-drug/pharm-drug-stock/pharm-drug-stock.component';
 import { PharmManufacturerSearchComponent } from './pharm-manufacturer/pharm-manufacturer-search/pharm-manufacturer-search.component';
 import { PharmCustomerSearchComponent } from './pharm-customer/pharm-customer-search/pharm-customer-search.component';
+import { PhramPrescriptionComponent } from './phram-prescription/phram-prescription.component';
+import { PhramPrescriptionAddComponent } from './phram-prescription/phram-prescription-add/phram-prescription-add.component';
+import { PhramPrescriptionSearchComponent } from './phram-prescription/phram-prescription-search/phram-prescription-search.component';
+import { PhramPrescriptionUpdateComponent } from './phram-prescription/phram-prescription-update/phram-prescription-update.component';
+import { PrescriptionService } from './shared/services/prescription.service';
+import { PhramPrescriptionBillComponent } from './phram-prescription/phram-prescription-bill/phram-prescription-bill.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +60,12 @@ import { PharmCustomerSearchComponent } from './pharm-customer/pharm-customer-se
     PharmManufacturerUpdateComponent,
     PharmDrugStockComponent,
     PharmCustomerSearchComponent,
-    PharmManufacturerSearchComponent
+    PharmManufacturerSearchComponent,
+    PhramPrescriptionComponent,
+    PhramPrescriptionAddComponent,
+    PhramPrescriptionSearchComponent,
+    PhramPrescriptionUpdateComponent,
+    PhramPrescriptionBillComponent
   ],
   imports: [
     BrowserModule,
@@ -76,44 +87,60 @@ import { PharmCustomerSearchComponent } from './pharm-customer/pharm-customer-se
         component: PharmDrugUpdateComponent
       },
       {
-        path : 'addSupplier', 
-        component :PharmSupplierAddComponent
+        path: 'addSupplier',
+        component: PharmSupplierAddComponent
       },
       {
-        path : 'updateSupplier', 
-        component :PharmSupplierSearchComponent
+        path: 'updateSupplier',
+        component: PharmSupplierSearchComponent
       },
       {
-        path : 'addManufacturer', 
-        component :PharmManufacturerAddComponent
+        path: 'addManufacturer',
+        component: PharmManufacturerAddComponent
       },
       {
-        path : 'updateManufacturer', 
-        component :PharmManufacturerUpdateComponent
+        path: 'updateManufacturer',
+        component: PharmManufacturerUpdateComponent
       },
       {
-        path : 'updateCustomer', 
-        component :PharmCustomerUpdateComponent
+        path: 'updateCustomer',
+        component: PharmCustomerUpdateComponent
       },
       {
-        path : 'addCustomer', 
-        component :PharmCustomerAddComponent
+        path: 'addCustomer',
+        component: PharmCustomerAddComponent
       },
       {
-        path : 'viewDrugStock', 
-        component :PharmDrugStockComponent
+        path: 'viewDrugStock',
+        component: PharmDrugStockComponent
       },
       {
-        path : 'searchManufacturer', 
-        component :PharmManufacturerSearchComponent
+        path: 'searchManufacturer',
+        component: PharmManufacturerSearchComponent
       },
       {
-        path : 'searchCustomer', 
-        component : PharmCustomerSearchComponent
+        path: 'searchCustomer',
+        component: PharmCustomerSearchComponent
+      },
+      {
+        path: 'searchPrescription',
+        component: PhramPrescriptionSearchComponent
+      },
+      {
+        path: 'addPrescription',
+        component: PhramPrescriptionAddComponent
+      },
+      {
+        path: 'updatePrescription',
+        component: PhramPrescriptionUpdateComponent
+      },
+      {
+        path: 'issueBill',
+        component: PhramPrescriptionBillComponent
       }
     ])
   ],
-  providers: [UserService,ApiService,JwtService,AuthGuardService,DrugService,SupplierService, CustomerService, ManufacturerService],
+  providers: [UserService, ApiService, JwtService, AuthGuardService, DrugService, SupplierService, CustomerService, ManufacturerService, PrescriptionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
